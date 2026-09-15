@@ -135,9 +135,14 @@ SRV Records: Exposed _autodiscover._tcp.networkwalks.com pointing to cpanelemail
 
 4. Risk Analysis & Impact Assessment
 
-#Risk / FindingEvidence / ObservationPotential ImpactRisk Level1Outdated Software Versions Exposedwhatweb identified WordPress 7.1 and WP Download Manager 3.3.58Public CVE exploitation targeting known software vulnerabilities🟡 Medium2Direct Target IP Address Disclosednslookup resolved server IP to 192.232.216.135Target identification for active port scanning and probing🟢 Low3Unauthenticated REST API Exposedcurl -I exposed the /wp-json/ endpointUser and metadata enumeration without authentication🟢 Low4WAF Security Controls Revealedwafw00f identified ModSecurity (SpiderLabs)Enables attackers to craft tailored WAF evasion techniques🟢 Low5DNS & Software Infrastructure Disclosurednsrecon exposed BIND software version (9.16.23-RH) and cPanel MX recordsWidens attack surface to include DNS and mail service exploits🟡 Medium6Live Network Hosts VisibleZenmap network scan mapped active hosts on local subnetPotential entry point or lateral movement vector if unsecured🔴 High
-
-
+| # | Risk / Finding | Evidence / Observation | Potential Impact | Risk Level |
+| :-: | :--- | :--- | :--- | :-: |
+| **1** | **Outdated Software Versions Exposed** | `whatweb` identified WordPress 7.1 and WP Download Manager 3.3.58 | Public CVE exploitation targeting known software vulnerabilities | 🟡 Medium |
+| **2** | **Direct Target IP Address Disclosed** | `nslookup` resolved server IP to `192.232.216.135` | Target identification for active port scanning and probing | 🟢 Low |
+| **3** | **Unauthenticated REST API Exposed** | `curl -I` exposed the `/wp-json/` endpoint | User and metadata enumeration without authentication | 🟢 Low |
+| **4** | **WAF Security Controls Revealed** | `wafw00f` identified ModSecurity (SpiderLabs) | Enables attackers to craft tailored WAF evasion techniques | 🟢 Low |
+| **5** | **DNS & Software Infrastructure Disclosure** | `dnsrecon` exposed BIND software version (`9.16.23-RH`) and cPanel MX records | Widens attack surface to include DNS and mail service exploits | 🟡 Medium |
+| **6** | **Live Network Hosts Visible** | Zenmap network scan mapped active hosts on local subnet | Potential entry point or lateral movement vector if unsecured | 🔴 High |
 
 
 
