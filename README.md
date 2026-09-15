@@ -136,8 +136,8 @@ SRV Records: Exposed _autodiscover._tcp.networkwalks.com pointing to cpanelemail
 4. Risk Analysis & Impact Assessment
 
 | # | Risk / Finding | Evidence / Observation | Potential Impact | Risk Level |
-| :-: | :--- | :--- | :--- | :-: |
 
+| :-: | :--- | :--- | :--- | :-: |
 | **1** | **Outdated Software Versions Exposed** | `whatweb` identified WordPress 7.1 and WP Download Manager 3.3.58 | Public CVE exploitation targeting known software vulnerabilities | 🟡 Medium |
 | **2** | **Direct Target IP Address Disclosed** | `nslookup` resolved server IP to `192.232.216.135` | Target identification for active port scanning and probing | 🟢 Low |
 | **3** | **Unauthenticated REST API Exposed** | `curl -I` exposed the `/wp-json/` endpoint | User and metadata enumeration without authentication | 🟢 Low |
