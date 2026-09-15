@@ -135,65 +135,18 @@ SRV Records: Exposed _autodiscover._tcp.networkwalks.com pointing to cpanelemail
 
 4. Risk Analysis & Impact Assessment
 
-<br>
+| # | Risk / Finding | Evidence / Observation | Potential Impact | Risk Level |
+|---|---|---|---|---|
+| **1** | **Outdated Software Versions Exposed** | `whatweb` identified WordPress 7.1 and WP Download Manager 3.3.58 | Public CVE exploitation targeting known software vulnerabilities | 🟡 Medium |
+| **2** | **Direct Target IP Address Disclosed** | `nslookup` resolved server IP to `192.232.216.135` | Target identification for active port scanning and probing | 🟢 Low |
+| **3** | **Unauthenticated REST API Exposed** | `curl -I` exposed the `/wp-json/` endpoint | User and metadata enumeration without authentication | 🟢 Low |
+| **4** | **WAF Security Controls Revealed** | `wafw00f` identified ModSecurity (SpiderLabs) | Enables attackers to craft tailored WAF evasion techniques | 🟢 Low |
+| **5** | **DNS & Software Infrastructure Disclosure** | `dnsrecon` exposed BIND software version (`9.16.23-RH`) and cPanel MX records | Widens attack surface to include DNS and mail service exploits | 🟡 Medium |
+| **6** | **Live Network Hosts Visible** | Zenmap network scan mapped active hosts on local subnet | Potential entry point or lateral movement vector if unsecured | 🔴 High |
+   
+   
+    
 
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Risk / Finding</th>
-      <th>Evidence / Observation</th>
-      <th>Potential Impact</th>
-      <th>Risk Level</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><b>1</b></td>
-      <td><b>Outdated Software Versions Exposed</b></td>
-      <td><code>whatweb</code> identified WordPress 7.1 and WP Download Manager 3.3.58</td>
-      <td>Public CVE exploitation targeting known software vulnerabilities</td>
-      <td>🟡 Medium</td>
-    </tr>
-    <tr>
-      <td><b>2</b></td>
-      <td><b>Direct Target IP Address Disclosed</b></td>
-      <td><code>nslookup</code> resolved server IP to <code>192.232.216.135</code></td>
-      <td>Target identification for active port scanning and probing</td>
-      <td>🟢 Low</td>
-    </tr>
-    <tr>
-      <td><b>3</b></td>
-      <td><b>Unauthenticated REST API Exposed</b></td>
-      <td><code>curl -I</code> exposed the <code>/wp-json/</code> endpoint</td>
-      <td>User and metadata enumeration without authentication</td>
-      <td>🟢 Low</td>
-    </tr>
-    <tr>
-      <td><b>4</b></td>
-      <td><b>WAF Security Controls Revealed</b></td>
-      <td><code>wafw00f</code> identified ModSecurity (SpiderLabs)</td>
-      <td>Enables attackers to craft tailored WAF evasion techniques</td>
-      <td>🟢 Low</td>
-    </tr>
-    <tr>
-      <td><b>5</b></td>
-      <td><b>DNS & Software Infrastructure Disclosure</b></td>
-      <td><code>dnsrecon</code> exposed BIND software version (<code>9.16.23-RH</code>) and cPanel MX records</td>
-      <td>Widens attack surface to include DNS and mail service exploits</td>
-      <td>🟡 Medium</td>
-    </tr>
-    <tr>
-      <td><b>6</b></td>
-      <td><b>Live Network Hosts Visible</b></td>
-      <td>Zenmap network scan mapped active hosts on local subnet</td>
-      <td>Potential entry point or lateral movement vector if unsecured</td>
-      <td>🔴 High</td>
-    </tr>
-  </tbody>
-</table>
-
-<br>
 
 
 
