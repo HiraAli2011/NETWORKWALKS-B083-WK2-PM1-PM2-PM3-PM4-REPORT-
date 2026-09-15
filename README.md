@@ -135,14 +135,53 @@ SRV Records: Exposed _autodiscover._tcp.networkwalks.com pointing to cpanelemail
 
 4. Risk Analysis & Impact Assessment
 
-| # | Risk / Finding | Evidence / Observation | Potential Impact | Risk Level |
-|---|---|---|---|---|
-| **1** | **Outdated Software Versions Exposed** | `whatweb` identified WordPress 7.1 and WP Download Manager 3.3.58 | Public CVE exploitation targeting known software vulnerabilities | 🟡 Medium |
-| **2** | **Direct Target IP Address Disclosed** | `nslookup` resolved server IP to `192.232.216.135` | Target identification for active port scanning and probing | 🟢 Low |
-| **3** | **Unauthenticated REST API Exposed** | `curl -I` exposed the `/wp-json/` endpoint | User and metadata enumeration without authentication | 🟢 Low |
-| **4** | **WAF Security Controls Revealed** | `wafw00f` identified ModSecurity (SpiderLabs) | Enables attackers to craft tailored WAF evasion techniques | 🟢 Low |
-| **5** | **DNS & Software Infrastructure Disclosure** | `dnsrecon` exposed BIND software version (`9.16.23-RH`) and cPanel MX records | Widens attack surface to include DNS and mail service exploits | 🟡 Medium |
-| **6** | **Live Network Hosts Visible** | Zenmap network scan mapped active hosts on local subnet | Potential entry point or lateral movement vector if unsecured | 🔴 High |
+1. Outdated Software Versions Exposed
+
+Evidence: whatweb identified WordPress 7.1 and WP Download Manager 3.3.58
+
+Impact: Public CVE exploitation targeting known software vulnerabilities
+
+Risk: 🟡 Medium
+
+2. Direct Target IP Address Disclosed
+
+Evidence: nslookup resolved server IP to 192.232.216.135
+
+Impact: Target identification for active port scanning and probing
+
+Risk: 🟢 Low
+
+3. Unauthenticated REST API Exposed
+
+Evidence: curl -I exposed the /wp-json/ endpoint
+
+Impact: User and metadata enumeration without authentication
+
+Risk: 🟢 Low
+
+4. WAF Security Controls Revealed
+
+Evidence: wafw00f identified ModSecurity (SpiderLabs)
+
+Impact: Enables attackers to craft tailored WAF evasion techniques
+
+Risk: 🟢 Low
+
+5. DNS & Software Infrastructure Disclosure
+
+Evidence: dnsrecon exposed BIND software version (9.16.23-RH) and cPanel MX records
+
+Impact: Widens attack surface to include DNS and mail service exploits
+
+Risk: 🟡 Medium
+
+6. Live Network Hosts Visible
+
+Evidence: Zenmap network scan mapped active hosts on local subnet
+
+Impact: Potential entry point or lateral movement vector if unsecured
+
+Risk: 🔴 High
    
    
     
