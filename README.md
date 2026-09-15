@@ -131,3 +131,13 @@ TXT / SPF Record: v=spf1 +a +mx +ip4:50.87.144.87 +include:websitewelcome.com ~a
 
 SRV Records: Exposed _autodiscover._tcp.networkwalks.com pointing to cpanelemaildiscovery.cpanel.net
 
+
+| # | Risk / Finding | Evidence / Observation | Potential Impact | Risk Level |
+| :-: | :--- | :--- | :--- | :-: |
+| **1** | Outdated Software Versions | `whatweb` identified WordPress 7.1 | Public CVE exploitation | 🟡 Medium |
+| **2** | Direct IP Address Disclosed | `nslookup` resolved 192.232.216.135 | Target for port scanning | 🟢 Low |
+| **3** | Unsecured Internal Host | Live host detected on subnet | Lateral movement vector | 🔴 High |
+
+
+
+
