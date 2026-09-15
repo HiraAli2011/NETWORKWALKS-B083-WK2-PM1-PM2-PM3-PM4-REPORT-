@@ -1,13 +1,22 @@
 Pentester Name
+
 	Hira Ali
+	
 Program/Batch	B083-Networkwalks
+
 Date	15 September 2026
+
 Modules completed	W2-PM1 (Multiple Kali Tools)
+
 W2-PM5 (Zenmap Scanning)
+
 Client/Target	1. Networkwalks (secured written permission already)
+
 2. My own local LAN Network
 Permission secured from client?	Yes
+
 Phases covered	Phase 1: Reconnaissance & Footprinting
+
 Phase 2: Scanning & Network Discovery
 
 This week, I focused on moving from passive information gathering to active network scanning. I broke the work into two main parts: first, footprinting the networkwalks.com domain using various tools in Kali Linux (W2-PM1), and second, running a scan on my own local network using Zenmap on Windows (W2-PM5). Combining these two modules really helped me see the bigger picture of how an attacker transitions from pulling public DNS/domain info to actively mapping out live hosts and open ports on a private network.
