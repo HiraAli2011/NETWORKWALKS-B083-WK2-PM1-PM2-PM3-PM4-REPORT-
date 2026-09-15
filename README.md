@@ -47,6 +47,99 @@ Queried the global WHOIS database to gather public domain registration details, 
 ```bash
 whois networkwalks.com
 
+Observed Output:
+
+Registrar: GoDaddy.com, LLC
+
+Creation Date: 2019-11-06
+
+Registry Expiry Date: 2027-11-06
+
+Name Servers: NS6135.HOSTGATOR.COM, NS6136.HOSTGATOR.COM
+
+DNSSEC: Unsigned
+
+
+
+2. Web Technology Fingerprinting (whatweb)
+Mapped out the tech stack running on the target web server.
+
+bash
+whatweb networkwalks.com
+
+Observed Output:
+
+CMS / Framework: WordPress 7.1
+
+Plugins Detected: WP Download Manager 3.3.58
+
+Web Server: Apache
+
+JavaScript Libraries: jQuery 3.7.1, Bootstrap 7.1
+
+Target IP: 192.232.216.135
+
+
+
+3. DNS IP Resolution (nslookup)
+Resolved the domain name directly to its IPv4 address.
+
+Observed Output:
+
+DNS Resolver Used: Google Public DNS (8.8.8.8#53)
+
+Resolved Address: 192.232.216.135
+
+
+4. HTTP Header Inspection (curl -I)
+Fetched the HTTP response headers without pulling down the whole web page body.
+
+Observed Output:
+
+HTTP Status: HTTP/2 200
+
+Server Header: Apache
+
+Exposed Endpoint: link: <https://networkwalks.com/wp-json/>; rel="https://api.w.org/"
+
+Caching/Proxy: x-nginx-cache: WordPress, x-endurance-cache-level: 0
+
+
+
+5. Web Application Firewall Detection (wafw00f)
+Checked for an active Web Application Firewall (WAF) filtering web traffic.
+
+Observed Output:
+
+WAF Detected: ModSecurity (SpiderLabs)
+
+Requests Made: 2
+
+
+6. DNS Record Enumeration (dnsrecon)
+Scraped publicly exposed DNS records associated with the target domain.
+
+Observed Output:
+
+Nameserver IPs: 50.87.144.87 (NS6135) & 192.232.216.131 (NS6136)
+
+Bind Software Versions: 9.16.23-RH
+
+Mail Server (MX): mail.networkwalks.com (192.232.216.135)
+
+TXT / SPF Record: v=spf1 +a +mx +ip4:50.87.144.87 +include:websitewelcome.com ~all
+
+SRV Records: Exposed _autodiscover._tcp.networkwalks.com pointing to cpanelemaildiscovery.cpanel.net
+
+
+
+4. Risk Analysis & Impact Assessment
+
+#Risk / FindingEvidence / ObservationPotential ImpactRisk Level1Outdated Software Versions Exposedwhatweb identified WordPress 7.1 and WP Download Manager 3.3.58Public CVE exploitation targeting known software vulnerabilities🟡 Medium2Direct Target IP Address Disclosednslookup resolved server IP to 192.232.216.135Target identification for active port scanning and probing🟢 Low3Unauthenticated REST API Exposedcurl -I exposed the /wp-json/ endpointUser and metadata enumeration without authentication🟢 Low4WAF Security Controls Revealedwafw00f identified ModSecurity (SpiderLabs)Enables attackers to craft tailored WAF evasion techniques🟢 Low5DNS & Software Infrastructure Disclosurednsrecon exposed BIND software version (9.16.23-RH) and cPanel MX recordsWidens attack surface to include DNS and mail service exploits🟡 Medium6Live Network Hosts VisibleZenmap network scan mapped active hosts on local subnetPotential entry point or lateral movement vector if unsecured🔴 High
+
+
+
+
 
 
 
