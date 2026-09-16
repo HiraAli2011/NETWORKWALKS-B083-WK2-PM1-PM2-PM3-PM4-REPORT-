@@ -13,9 +13,13 @@
 
 ## 1. Executive Summary
 
-This week, I focused on moving from passive information gathering to active network scanning. I broke the work into two main parts: first, footprinting the `networkwalks.com` domain using various tools in Kali Linux (W2-PM1), and second, running a scan on my own local network using Zenmap on Windows (W2-PM5). Combining these two modules really helped me see the bigger picture of how an attacker transitions from pulling public DNS/domain info to actively mapping out live hosts and open ports on a private network.
+Assessment Type: Passive Reconnaissance & Technical Footprinting.
 
-I ran all the footprinting commands inside Kali Linux and handled the network scans through the Zenmap GUI on Windows. In the sections below, I’ve documented the exact commands I ran, the actual output I saw, screenshots for proof, and quick takeaways on why each piece of information is valuable from a security and attacker perspective.
+Primary Target: networkwalks.com (Secondary scope observed: microsoft.com).
+
+Objective: Gather public DNS, hosting, server headers, technology stack details, and OSINT data without executing intrusive exploits.
+
+Overall Assessment: The target infrastructure relies on standard web hosting with active WAF protection (ModSecurity). Multiple API errors during OSINT gathering indicate unconfigured or invalid external integrations in the testing environment.
 
 ---
 
