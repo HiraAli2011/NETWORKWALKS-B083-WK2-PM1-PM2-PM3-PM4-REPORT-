@@ -184,29 +184,31 @@ Impact: Potential entry point or lateral movement vector if unsecured
 Risk: 🔴 High
    
    
-    ### 6. Security Recommendations & Action Plan
+Conclusion & Final Takeaways
 
-Based on the findings from the passive footprinting and active scanning activities against `networkwalks.com`—including exposed software versions, direct IP resolution, unauthenticated endpoints, and network host visibility—the following security improvements are recommended to harden the target system's defensive posture:
+Hands-on Reconnaissance & Scanning: Completed Week 2 internship tasks transitioning from passive information gathering on networkwalks.com (using Kali Linux) to active local subnet host discovery (using Zenmap on Windows).
 
-#### 1. Software & Vulnerability Management
-* **Review Publicly Exposed Technology Information:** Implement banner grabbing prevention and strip version disclosure tags (e.g., WordPress 7.1 and WP Download Manager 3.3.58 banners detected via `whatweb`) to prevent attackers from targeted fingerprinting.
-* **Keep Software Updated:** Establish a regular patch management policy to update CMS platforms, plugins, BIND DNS services (`9.16.23-RH`), and web server technologies immediately upon the release of security advisories.
+Footprinting Results (networkwalks.com):
 
-#### 2. Web Application & HTTP Configuration
-* **Review & Harden HTTP Headers:** Audit response headers to remove verbose operational details (`Apache` server tokens, `x-endurance-cache-level`) and secure or restrict access to sensitive, unauthenticated REST API endpoints such as `/wp-json/`.
-* **Properly Configure & Monitor the WAF:** Maintain and continuously tune the active Web Application Firewall (ModSecurity). Update rulesets regularly to ensure it detects advanced evasion payloads beyond default automated attacks.
+WHOIS: Identified domain ownership through GoDaddy and HostGator nameservers (NS6135, NS6136).
 
-#### 3. Network & Infrastructure Defense
-* **Review DNS Records Regularly:** Audit public DNS configurations (MX, SPF, SRV records) to ensure only essential routing information is exposed and that DNSSEC is enabled to prevent spoofing.
-* **Perform Regular Internal Network Discovery:** Execute scheduled, authorized network scans to identify active IP targets, open ports, and potential attack vectors before unauthorized actors exploit them.
-* **Investigate Unknown Devices:** Establish an immediate incident response protocol for any unverified or unexpected host discovered on local subnets during network scans.
-* **Maintain Up-to-Date Network Documentation:** Keep network topology maps, IP allocations, and co-hosted server inventories current to quickly pinpoint rogue devices or misconfigured assets.
+WhatWeb: Fingerprinted the tech stack, uncovering WordPress 7.1, WP Download Manager 3.3.58, Apache, and IP 192.232.216.135.
 
-#### 4. Compliance & Operational Guidelines
-* **Perform Security Testing with Authorization:** Ensure all future reconnaissance, vulnerability probing, and network discovery activities strictly adhere to authorized rules of engagement and legal consent frameworks.
+Nslookup: Confirmed public IPv4 address resolution via Google DNS (8.8.8.8).
 
+Curl (-I): Exposed Apache server headers and the unauthenticated REST API endpoint (/wp-json/).
 
+Wafw00f: Detected an active ModSecurity (SpiderLabs) Web Application Firewall.
 
+DNSRecon: Enumerated mail servers (MX), cPanel autodiscover records, and disclosed BIND DNS software version 9.16.23-RH.
+
+Network Discovery Results (Zenmap): Mapped the local network layout to discover live hosts, record IP and MAC address pairings, and plot network topology.
+
+Core Cybersecurity Insight: Security posture assessment starts long before exploitation; passive DNS records, HTTP response headers, and open network ports disclose vast intelligence about a target environment.
+
+Professional Reporting Value: Clear documentation connects raw CLI tool outputs directly to risk context, impact levels, and actionable remediations.
+
+Rules of Engagement: All reconnaissance and scanning activities were executed strictly within authorized educational lab scope.
 
 
 
